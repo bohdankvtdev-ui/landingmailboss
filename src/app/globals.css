@@ -2,7 +2,8 @@
 @import "lenis/dist/lenis.css";
 
 @theme inline {
-  --color-ink: #141210;
+  --color-ink: #1a1917;
+  --color-night: #2a2826;
   --color-paper: #f4efe6;
   --color-signal: #d93025;
   --color-signal-dark: #c5221f;
@@ -13,12 +14,12 @@
 
 html {
   scroll-padding-top: 5rem;
-  background: #100e0c;
+  background: var(--color-night);
   color-scheme: dark;
 }
 
 body {
-  background: #100e0c;
+  background: var(--color-night);
   color: #f4efe6;
   font-family: var(--font-sans);
 }
@@ -55,6 +56,7 @@ body {
 
 .shift-desktop {
   display: none;
+  --shift-gutter: max(4.75rem, calc((100vw - 72rem) / 2 + 2.5rem));
 }
 
 .shift-mobile {
@@ -87,9 +89,17 @@ body {
   .shift-copy {
     position: absolute;
     top: 0;
-    right: 1.5rem;
+    right: 2rem;
     bottom: 0;
-    left: max(1.25rem, calc((100vw - 72rem) / 2 + 1.25rem));
+    left: var(--shift-gutter);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .shift-progress {
+    left: var(--shift-gutter);
+    right: max(3rem, calc((100vw - 72rem) / 2 + 2.5rem));
   }
 
   .shift-copy:not(:first-child) {

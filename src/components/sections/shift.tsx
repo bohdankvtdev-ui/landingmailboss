@@ -60,14 +60,14 @@ export function Shift() {
   return (
     <section id="shift" ref={root} className="relative">
       <div className="shift-desktop relative min-h-dvh grid-cols-2 items-center">
-        <div className="shift-copy-stack relative px-8 xl:px-16">
+        <div className="shift-copy-stack relative">
           {SHIFT_STEPS.map((step) => (
-            <article key={step.id} className="shift-copy max-w-xl">
-              <p className="font-mono text-[11px] tracking-[0.22em] text-signal uppercase">
+            <article key={step.id} className="shift-copy max-w-xl pr-6">
+              <p className="font-mono text-[11px] tracking-[0.18em] text-signal uppercase">
                 {step.index} / {step.kicker}
               </p>
-              <h2 className="display mt-4 text-5xl leading-[0.95] text-paper xl:text-6xl">{step.title}</h2>
-              <p className="mt-5 text-lg leading-8 text-paper/70">{step.body}</p>
+              <h2 className="display mt-5 text-5xl leading-[0.95] text-paper xl:text-6xl">{step.title}</h2>
+              <p className="mt-6 max-w-md text-lg leading-8 text-paper/75">{step.body}</p>
             </article>
           ))}
         </div>
@@ -80,12 +80,12 @@ export function Shift() {
           ))}
         </div>
 
-        <div className="absolute inset-x-16 bottom-10 h-px bg-white/15">
+        <div className="shift-progress absolute bottom-10 h-px bg-white/20">
           <div className="shift-bar h-full w-full origin-left bg-signal" />
         </div>
       </div>
 
-      <div className="shift-mobile mx-auto max-w-6xl px-5 py-20">
+      <div className="shift-mobile mx-auto max-w-6xl px-6 py-20 sm:px-8">
         <p className="font-mono text-[11px] tracking-[0.22em] text-signal uppercase">The shift</p>
         <h2 className="display mt-4 max-w-xl text-5xl leading-[0.95] text-paper">Six ways to finish a message.</h2>
         <div className="mt-14 flex flex-col gap-16">
