@@ -36,11 +36,11 @@ function Badge({
       whileHover={{ y: -3 }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 420, damping: 28 }}
-      className="inline-flex h-14 min-w-44 items-center gap-3 rounded-xl bg-ink px-4 text-paper ring-1 ring-white/15"
+      className="inline-flex h-14 min-w-44 items-center gap-3 rounded-xl bg-ink px-4 text-white ring-1 ring-black/10"
     >
-      <span className="text-paper">{children}</span>
+      <span className="text-white">{children}</span>
       <span className="text-left leading-tight">
-        <span className="block text-[10px] tracking-wide text-paper/70">{kicker}</span>
+        <span className="block text-[10px] tracking-wide text-white/70">{kicker}</span>
         <span className="block text-[15px] font-semibold">{label}</span>
       </span>
     </motion.a>

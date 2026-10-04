@@ -33,9 +33,9 @@ function Legal({ title, lede, children }: { title: string; lede: string; childre
   return (
     <main className="mx-auto w-full max-w-2xl px-5 pt-32 pb-24">
       <p className="font-mono text-[11px] tracking-[0.22em] text-signal uppercase">Mail Boss</p>
-      <h1 className="display mt-4 text-5xl text-paper">{title}</h1>
-      <p className="mt-5 text-lg leading-8 text-paper/70">{lede}</p>
-      <div className="legal mt-10 space-y-4 text-base leading-7 text-paper/80 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-paper">
+      <h1 className="display mt-4 text-5xl text-ink">{title}</h1>
+      <p className="mt-5 text-lg leading-8 text-[#5F6368]">{lede}</p>
+      <div className="legal mt-10 space-y-4 text-base leading-7 text-[#3C4043] [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-ink">
         {children}
       </div>
     </main>

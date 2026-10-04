@@ -12,7 +12,7 @@ export const SITE = {
   name: "MAIL BOSS: Survival",
   shortName: "Mail Boss",
   description:
-    "An inbox survival game. Reply, star, archive, and report spam before office money hits $0 or 100 messages are still waiting.",
+    "An inbox survival game. Finish each message the way the label says, before office money hits $0 or 16 messages are still waiting.",
 } as const;
 
 export const NAV = [
@@ -27,31 +27,55 @@ export const TICKER = [
   "Lisa Hartmann",
   "James Whitfield",
   "Sarah Chen",
-  "Alex Morgan",
+  "Your love",
   "David Kim",
   "Priya Nair",
   "Marcus Webb",
   "John Okonkwo",
-  "Netflix",
-  "Stripe",
-  "Spotify",
+  "Nexora",
+  "Stria",
+  "Soniva",
   "Amazing Deal",
-  "LinkedIn",
-  "Notion",
-  "Amazon",
-  "Airbnb",
+  "Linquer",
+  "Notiva",
+  "Marazo",
+  "Airelo",
 ] as const;
 
-export type PhoneAction = "reply" | "star" | "archive" | "spam" | "heart" | "file";
+export type InboxRow = {
+  name: string;
+  subject: string;
+  preview: string;
+  time: string;
+  initials: string;
+  tint: string;
+  unread?: boolean;
+  starred?: boolean;
+  needsReply?: boolean;
+  support?: boolean;
+  danger?: boolean;
+};
 
 export type ThreadMail = {
   name: string;
   role: string;
+  action: string;
   subject: string;
   body: string;
-  action: PhoneAction;
   initials: string;
   tint: string;
+  starred?: boolean;
+};
+
+export type OfficeSnap = {
+  balance: string;
+  speed: string;
+  speedDetail: string;
+  unanswered: string;
+  correct: string;
+  mistakes: string;
+  received: string;
+  elapsed: string;
 };
 
 export type ShiftStep = {
@@ -60,104 +84,174 @@ export type ShiftStep = {
   kicker: string;
   title: string;
   body: string;
-  mail: ThreadMail;
+  screen: "inbox" | "thread" | "office";
+  rows?: readonly InboxRow[];
+  gauge?: number;
+  streak?: number;
+  mail?: ThreadMail;
+  office?: OfficeSnap;
 };
+
+export const OPENING_INBOX: InboxRow[] = [
+  {
+    name: "John Okonkwo",
+    subject: "Mail Boss tutorial",
+    preview: "Hi. I'm John, your support manager.",
+    time: "9:41",
+    initials: "JO",
+    tint: "#E8F0FE",
+    unread: true,
+    support: true,
+  },
+  {
+    name: "Elena Vasquez",
+    subject: "Q3 numbers before Friday",
+    preview: "I need the figures on my desk before Friday.",
+    time: "9:38",
+    initials: "EV",
+    tint: "#FEE2E2",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "Sarah Chen",
+    subject: "Review the plan before the meeting",
+    preview: "Can you look before we walk in?",
+    time: "9:22",
+    initials: "SC",
+    tint: "#EDE9FE",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "Your love",
+    subject: "Did you get home alright",
+    preview: "Just checking in.",
+    time: "8:14",
+    initials: "♥",
+    tint: "#FCE8E6",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "Nexora",
+    subject: "Your plan renewed",
+    preview: "A receipt. Archive it.",
+    time: "7:02",
+    initials: "N",
+    tint: "#F3F4F6",
+  },
+];
+
+const HOT_INBOX: InboxRow[] = [
+  {
+    name: "Elena Vasquez",
+    subject: "Q3 numbers before Friday",
+    preview: "I need the figures on my desk before Friday.",
+    time: "9:58",
+    initials: "EV",
+    tint: "#FEE2E2",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "Amazing Deal",
+    subject: "You won a gift card",
+    preview: "Claim the prize now.",
+    time: "9:57",
+    initials: "!",
+    tint: "#FEE2E2",
+    unread: true,
+    danger: true,
+  },
+  {
+    name: "Your love",
+    subject: "Did you get home alright",
+    preview: "Just checking in.",
+    time: "9:56",
+    initials: "♥",
+    tint: "#FCE8E6",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "David Kim",
+    subject: "Excel budget attached",
+    preview: "Fill the blank amounts, then reply.",
+    time: "9:55",
+    initials: "DK",
+    tint: "#F3F4F6",
+    unread: true,
+    needsReply: true,
+  },
+  {
+    name: "Lisa Hartmann",
+    subject: "Invoice for the vendor",
+    preview: "Star this, then reply.",
+    time: "9:51",
+    initials: "LH",
+    tint: "#FFEDD5",
+    unread: true,
+    starred: true,
+    needsReply: true,
+  },
+];
 
 export const SHIFT_STEPS: ShiftStep[] = [
   {
-    id: "reply",
+    id: "start",
     index: "01",
-    kicker: "Someone is waiting",
-    title: "Send the reply.",
-    body: "A coworker needs an answer. Send a reply. Do not archive this one.",
-    mail: {
-      name: "Sarah Chen",
-      role: "Coworker",
-      subject: "Review the plan before the meeting",
-      body: "Can you look before we walk in? I need a yes or a note on what is blocking it.",
-      action: "reply",
-      initials: "SC",
-      tint: "#E8EFFA",
-    },
+    kicker: "Start",
+    title: "Reply to John.",
+    body: "John is already in the inbox. Send that reply and the shift starts. Office money is $1,000. New mail begins on a three-second gap.",
+    screen: "inbox",
+    gauge: 0.12,
+    rows: OPENING_INBOX,
   },
   {
-    id: "star",
+    id: "label",
     index: "02",
-    kicker: "Boss and clients",
-    title: "Star, then reply.",
-    body: "Elena Vasquez is your boss. Lisa Hartmann is a client. Tap the star first, then send the reply.",
+    kicker: "The label",
+    title: "Read who sent it.",
+    body: "Open the message. The line under the name is the step. Star then reply, reply, archive, report spam, the heart, or finish the file and send.",
+    screen: "thread",
     mail: {
       name: "Elena Vasquez",
       role: "Boss",
+      action: "Star + reply",
       subject: "Q3 numbers before Friday",
-      body: "I need the figures on my desk before Friday. Star this, then reply.",
-      action: "star",
+      body: "I need the figures on my desk before Friday. Star this, then reply. Do not archive it.",
       initials: "EV",
-      tint: "#FCE8E6",
-    },
-  },
-  {
-    id: "archive",
-    index: "03",
-    kicker: "Receipts and alerts",
-    title: "Archive it.",
-    body: "News, renewals, and automatic mail. Archive them. A reply usually costs office money.",
-    mail: {
-      name: "Netflix",
-      role: "Automatic",
-      subject: "Your plan renewed",
-      body: "A receipt. Read it if you want. Do not reply. Archive it.",
-      action: "archive",
-      initials: "N",
-      tint: "#F3F4F6",
-    },
-  },
-  {
-    id: "spam",
-    index: "04",
-    kicker: "Fake prizes",
-    title: "Report spam.",
-    body: "Amazing Deal and fake security warnings. Report spam. Do not reply or archive.",
-    mail: {
-      name: "Amazing Deal",
-      role: "Scam",
-      subject: "You won a gift card",
-      body: "Claim the prize now. This is fake. Report it as spam.",
-      action: "spam",
-      initials: "!",
       tint: "#FEE2E2",
     },
   },
   {
-    id: "heart",
-    index: "05",
-    kicker: "Personal mail",
-    title: "Tap the heart.",
-    body: "Alex Morgan is your partner. Leave the message, and the next one takes $10 for every unanswered mail out of office money.",
-    mail: {
-      name: "Alex Morgan",
-      role: "Personal",
-      subject: "Did you get home alright",
-      body: "Just checking in. Tap the heart. Do not leave this sitting in the inbox.",
-      action: "heart",
-      initials: "AM",
-      tint: "#FCE7F3",
-    },
+    id: "pace",
+    index: "03",
+    kicker: "The pace",
+    title: "Watch the gauge.",
+    body: "The gauge starts calm and climbs for about four minutes, from about 3 seconds down toward 0.7. A correct streak pays extra office money. A wrong move resets it. A red dot means that message is still waiting.",
+    screen: "inbox",
+    gauge: 0.86,
+    streak: 5,
+    rows: HOT_INBOX,
   },
   {
-    id: "file",
-    index: "06",
-    kicker: "Attached work",
-    title: "Finish the file, then reply.",
-    body: "Word, Excel, PDF, and drawings work the same way. Open the file, finish it, close it, then reply. A finished file pays. An unfinished file costs office money.",
-    mail: {
-      name: "David Kim",
-      role: "Coworker",
-      subject: "Excel budget attached",
-      body: "Fill the blank amounts, close the sheet, then reply. This is not the note you only archive.",
-      action: "file",
-      initials: "DK",
-      tint: "#E8EFFA",
+    id: "office",
+    index: "04",
+    kicker: "Office",
+    title: "Check the card.",
+    body: "Office shows the balance, how fast mail is arriving, and this shift. At $0 the card is empty. At 16 messages still waiting, the inbox collapses. Restart is on this tab.",
+    screen: "office",
+    office: {
+      balance: "$1,240",
+      speed: "1.4s",
+      speedDetail: "A new message about every 1.4s.",
+      unanswered: "9/16",
+      correct: "14",
+      mistakes: "2",
+      received: "23",
+      elapsed: "2:40",
     },
   },
 ];
@@ -166,13 +260,13 @@ export const RULES = [
   {
     name: "Elena Vasquez",
     role: "Boss",
-    action: "Star, then reply",
-    detail: "Do not archive her mail.",
+    action: "Star + reply",
+    detail: "Tap the star, then reply. Do not archive her mail.",
   },
   {
     name: "Lisa Hartmann",
     role: "Client",
-    action: "Star, then reply",
+    action: "Star + reply",
     detail: "A client invoice is different. Finish that file, then reply.",
   },
   {
@@ -182,10 +276,10 @@ export const RULES = [
     detail: "Send a reply. Do not archive.",
   },
   {
-    name: "Alex Morgan",
+    name: "Your love",
     role: "Personal",
-    action: "Heart",
-    detail: "Ignored mail costs $10 for every unanswered message.",
+    action: "Emoji",
+    detail: "Tap the heart. Leave it, and a later message takes $25 for every unanswered mail.",
   },
   {
     name: "Amazing Deal",
@@ -194,52 +288,9 @@ export const RULES = [
     detail: "Fake prizes and fake security warnings. Trash works too.",
   },
   {
-    name: "Netflix · Stripe",
+    name: "Nexora · Stria",
     role: "Automatic",
     action: "Archive",
-    detail: "Receipts and renewals. LinkedIn, Notion, Calendar, Amazon, and Airbnb too.",
-  },
-] as const;
-
-export const LIST_ROWS = [
-  {
-    name: "Elena Vasquez",
-    role: "Boss",
-    subject: "Q3 numbers before Friday",
-    initials: "EV",
-    tint: "#FCE8E6",
-    hot: true,
-  },
-  {
-    name: "Sarah Chen",
-    role: "Coworker",
-    subject: "Review the plan before the meeting",
-    initials: "SC",
-    tint: "#E8EFFA",
-    hot: true,
-  },
-  {
-    name: "Alex Morgan",
-    role: "Personal",
-    subject: "Did you get home alright",
-    initials: "AM",
-    tint: "#FCE7F3",
-    hot: true,
-  },
-  {
-    name: "Netflix",
-    role: "Automatic",
-    subject: "Your plan renewed",
-    initials: "N",
-    tint: "#F3F4F6",
-    hot: false,
-  },
-  {
-    name: "Amazing Deal",
-    role: "Scam",
-    subject: "You won a gift card",
-    initials: "!",
-    tint: "#FEE2E2",
-    hot: false,
+    detail: "Receipts and renewals. Linquer, Notiva, Calivo, Marazo, and Airelo too.",
   },
 ] as const;

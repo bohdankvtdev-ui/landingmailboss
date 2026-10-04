@@ -66,8 +66,8 @@ export function Shift() {
               <p className="font-mono text-[11px] tracking-[0.18em] text-signal uppercase">
                 {step.index} / {step.kicker}
               </p>
-              <h2 className="display mt-5 text-5xl leading-[0.95] text-paper xl:text-6xl">{step.title}</h2>
-              <p className="mt-6 max-w-md text-lg leading-8 text-paper/75">{step.body}</p>
+              <h2 className="display mt-5 text-5xl leading-[0.95] text-ink xl:text-6xl">{step.title}</h2>
+              <p className="mt-6 max-w-md text-lg leading-8 text-[#5F6368]">{step.body}</p>
             </article>
           ))}
         </div>
@@ -75,28 +75,43 @@ export function Shift() {
         <div className="shift-panel-stack relative">
           {SHIFT_STEPS.map((step) => (
             <div key={step.id} className="shift-panel">
-              <InboxPhone mode="thread" mail={step.mail} />
+              <InboxPhone
+                screen={step.screen}
+                rows={step.rows}
+                gauge={step.gauge}
+                streak={step.streak}
+                mail={step.mail}
+                office={step.office}
+              />
             </div>
           ))}
         </div>
 
-        <div className="shift-progress absolute bottom-10 h-px bg-white/20">
+        <div className="shift-progress absolute bottom-10 h-px bg-[#E8EAED]">
           <div className="shift-bar h-full w-full origin-left bg-signal" />
         </div>
       </div>
 
       <div className="shift-mobile mx-auto max-w-6xl px-6 py-20 sm:px-8">
         <p className="font-mono text-[11px] tracking-[0.22em] text-signal uppercase">The shift</p>
-        <h2 className="display mt-4 max-w-xl text-5xl leading-[0.95] text-paper">Six ways to finish a message.</h2>
+        <h2 className="display mt-4 max-w-xl text-5xl leading-[0.95] text-ink">How a shift runs.</h2>
         <div className="mt-14 flex flex-col gap-16">
           {SHIFT_STEPS.map((step) => (
             <article key={step.id}>
-              <p className="font-mono text-[11px] tracking-[0.22em] text-paper/45 uppercase">
+              <p className="font-mono text-[11px] tracking-[0.22em] text-[#80868B] uppercase">
                 {step.index} / {step.kicker}
               </p>
-              <h3 className="display mt-3 text-4xl leading-none text-paper">{step.title}</h3>
-              <p className="mt-4 max-w-md text-base leading-7 text-paper/70">{step.body}</p>
-              <InboxPhone mode="thread" mail={step.mail} className="mx-auto mt-8" />
+              <h3 className="display mt-3 text-4xl leading-none text-ink">{step.title}</h3>
+              <p className="mt-4 max-w-md text-base leading-7 text-[#5F6368]">{step.body}</p>
+              <InboxPhone
+                screen={step.screen}
+                rows={step.rows}
+                gauge={step.gauge}
+                streak={step.streak}
+                mail={step.mail}
+                office={step.office}
+                className="mx-auto mt-8"
+              />
             </article>
           ))}
         </div>

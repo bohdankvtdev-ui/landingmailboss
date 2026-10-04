@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Anchor } from "@/components/ui/anchor";
+import { PremiumPushLink } from "@/components/ui/premium-push-link";
 import { NAV, SITE } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { ScrollTrigger, useGSAP } from "@/lib/gsap";
@@ -43,11 +44,11 @@ export function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
-        scrolled || open ? "bg-night/90 backdrop-blur-md" : "bg-transparent",
+        scrolled || open ? "border-b border-[#E8EAED] bg-white/90 backdrop-blur-md" : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/#play" className="flex items-center gap-2.5 text-paper" onClick={() => setOpen(false)}>
+        <Link href="/#play" className="flex items-center gap-2.5 text-ink" onClick={() => setOpen(false)}>
           <Mark />
           <span className="text-sm font-semibold tracking-tight">{SITE.shortName}</span>
         </Link>
@@ -57,7 +58,7 @@ export function SiteHeader() {
             <Anchor
               key={item.href}
               href={item.href}
-              className="text-sm text-paper/70 transition-colors hover:text-paper"
+              className="text-sm text-[#5F6368] transition-colors hover:text-ink"
             >
               {item.label}
             </Anchor>
@@ -65,15 +66,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Anchor
-            href="/#download"
-            className="hidden h-9 items-center rounded-full bg-signal px-4 text-sm font-medium text-white transition-colors hover:bg-signal-dark sm:inline-flex"
-          >
+          <PremiumPushLink href="/#download" className="hidden sm:inline-block">
             Download
-          </Anchor>
+          </PremiumPushLink>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-paper md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E8EAED] text-ink md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -86,26 +84,26 @@ export function SiteHeader() {
 
       <div
         id="mobile-nav"
-        className={cn("border-t border-white/10 md:hidden", open ? "block" : "hidden")}
+        className={cn("border-t border-[#E8EAED] bg-white md:hidden", open ? "block" : "hidden")}
       >
         <nav className="flex flex-col px-5 py-4" aria-label="Mobile">
           {NAV.map((item) => (
             <Anchor
               key={item.href}
               href={item.href}
-              className="block border-b border-white/10 py-3 text-base text-paper"
+              className="block border-b border-[#E8EAED] py-3 text-base text-ink"
               onNavigate={() => setOpen(false)}
             >
               {item.label}
             </Anchor>
           ))}
-          <Anchor
+          <PremiumPushLink
             href="/#download"
-            className="mt-4 inline-flex h-11 items-center justify-center rounded-full bg-signal text-sm font-medium text-white"
+            className="mt-4 block w-full"
             onNavigate={() => setOpen(false)}
           >
             Download
-          </Anchor>
+          </PremiumPushLink>
         </nav>
       </div>
     </header>

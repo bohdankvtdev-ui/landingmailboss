@@ -84,11 +84,11 @@ function Envelope({
       <group position={position} rotation={rotation} scale={scale}>
         <mesh>
           <boxGeometry args={[1.42, 0.92, 0.06]} />
-          <meshStandardMaterial color="#f4efe6" roughness={0.62} metalness={0.02} />
+          <meshStandardMaterial color="#ffffff" roughness={0.55} metalness={0.02} />
         </mesh>
         <mesh position={[0, 0.16, 0.034]} rotation={[0.42, 0, 0]}>
           <planeGeometry args={[1.42, 0.46]} />
-          <meshStandardMaterial color="#e6dccb" roughness={0.7} />
+          <meshStandardMaterial color="#fce8e6" roughness={0.7} />
         </mesh>
         <mesh position={[0, -0.02, 0.05]}>
           <sphereGeometry args={[0.09, 18, 18]} />

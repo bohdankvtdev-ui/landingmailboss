@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import { InboxPhone } from "@/components/ui/inbox-phone";
+import { OPENING_INBOX } from "@/content/site";
 import { StoreBadges } from "@/components/ui/store-badges";
 import { gsap, SplitText, useGSAP } from "@/lib/gsap";
 
@@ -12,7 +13,7 @@ const MailField = dynamic(
   { ssr: false },
 );
 
-const LINES = ["Clear the inbox", "before it clears", "you."] as const;
+const LINES = ["Clear the inbox", "before the shift", "ends."] as const;
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -114,36 +115,33 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto grid min-h-dvh max-w-6xl items-center gap-14 px-5 pt-28 pb-16 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-7">
-          <p className="hero-kicker font-mono text-[11px] tracking-[0.22em] text-paper/60 uppercase">
+          <p className="hero-kicker font-mono text-[11px] tracking-[0.22em] text-[#5F6368] uppercase">
             Mail Boss Survival
           </p>
-          <h1 className="display mt-5 text-[clamp(3.5rem,8vw,7.4rem)] leading-[0.88] text-paper">
+          <h1 className="display mt-5 text-[clamp(3.4rem,7.4vw,6.6rem)] leading-[0.92] text-ink">
             {LINES.map((line, index) => (
-              <span key={line} className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-                <span
-                  className="hero-line block"
-                  style={index === 1 ? { fontStyle: "italic", color: "#d93025" } : undefined}
-                >
+              <span key={line} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
+                <span className="hero-line block" style={index === 1 ? { color: "#d93025" } : undefined}>
                   {line}
                 </span>
               </span>
             ))}
           </h1>
-          <p className="hero-lead mt-7 max-w-xl text-lg leading-8 text-paper/72">
-            You keep the books for this office. Mail starts on an eight-second gap, then climbs for
-            about four minutes. One hundred open messages, or office money at $0, ends the shift.
+          <p className="hero-lead mt-7 max-w-xl text-lg leading-8 text-[#5F6368]">
+            You keep the books. Reply to John and mail starts arriving. Finish each message the way
+            the label says. Sixteen still waiting, or office money at $0, and the shift is over.
           </p>
 
           <div className="hero-actions mt-8">
             <dl className="grid max-w-md grid-cols-3 gap-3">
-              <Fact value="$600" label="Starting money" />
-              <Fact value="8s" label="Opening gap" />
-              <Fact value="100" label="Inbox limit" />
+              <Fact value="$1,000" label="Starting money" />
+              <Fact value="3s" label="Opening gap" />
+              <Fact value="16" label="Inbox limit" />
             </dl>
             <StoreBadges className="mt-7" />
             <Anchor
               href="/#shift"
-              className="mt-5 inline-flex text-sm text-paper/70 underline decoration-white/25 underline-offset-4 hover:text-paper"
+              className="mt-5 inline-flex text-sm text-[#5F6368] underline decoration-[#E8EAED] underline-offset-4 hover:text-ink"
             >
               See how a shift works
             </Anchor>
@@ -151,7 +149,7 @@ export function Hero() {
         </div>
 
         <div className="hero-phone will-pan mx-auto w-full max-w-[340px] lg:col-span-5 lg:max-w-none">
-          <InboxPhone mode="list" />
+          <InboxPhone screen="inbox" rows={OPENING_INBOX} gauge={0.16} scan />
         </div>
       </div>
     </section>
@@ -160,9 +158,9 @@ export function Hero() {
 
 function Fact({ value, label }: { value: string; label: string }) {
   return (
-    <div className="border-t border-white/15 pt-3">
-      <dt className="text-[11px] tracking-wide text-paper/50 uppercase">{label}</dt>
-      <dd className="display mt-1 text-3xl text-paper">{value}</dd>
+    <div className="border-t border-[#E8EAED] pt-3">
+      <dt className="text-[11px] tracking-wide text-[#80868B] uppercase">{label}</dt>
+      <dd className="display mt-1 text-3xl text-ink">{value}</dd>
     </div>
   );
 }

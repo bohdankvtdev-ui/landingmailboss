@@ -30,15 +30,15 @@ export function Download() {
   );
 
   return (
-    <section id="download" ref={root} className="border-t border-white/10">
+    <section id="download" ref={root} className="border-t border-[#E8EAED]">
       <div className="mx-auto max-w-6xl px-5 py-28">
         <p className="download-reveal font-mono text-[11px] tracking-[0.22em] text-signal uppercase">
           App Store and Google Play
         </p>
-        <h2 className="download-reveal display mt-4 max-w-3xl text-6xl leading-[0.9] text-paper md:text-8xl">
+        <h2 className="download-reveal display mt-4 max-w-3xl text-6xl leading-[0.92] text-ink md:text-8xl">
           The office is open.
         </h2>
-        <p className="download-reveal mt-6 max-w-lg text-lg leading-8 text-paper/70">
+        <p className="download-reveal mt-6 max-w-lg text-lg leading-8 text-[#5F6368]">
           John, your support manager, is already in the inbox. Tell him you are ready, then keep the books.
         </p>
         <div className="download-reveal mt-10">
