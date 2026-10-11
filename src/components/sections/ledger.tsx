@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { NorthlineCard } from "@/components/ui/northline-card";
+import { AmeriTrustCard } from "@/components/ui/ameritrust-card";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const LOSSES = [
@@ -11,7 +11,7 @@ const LOSSES = [
   },
   {
     title: "Inbox collapsed",
-    detail: "16 messages are still waiting. That is the inbox limit.",
+    detail: "100 messages are still waiting. That is the inbox limit.",
   },
   {
     title: "Restart",
@@ -103,10 +103,10 @@ export function Ledger() {
           </h2>
           <div className="office-reveal mt-6 space-y-4 text-base leading-7 text-[#5F6368]">
             <p>
-              A correct reply pays the most. The right archive, a spam report, and some swipes pay too. Archive the wrong mail, skip a needed reply, or mark real mail as spam, and that message stays. The toast shows +$ or -$.
+              A correct reply pays the most. The right archive, a spam report, and some swipes pay too. Archive the wrong mail, skip a needed reply, or mark real mail as spam, and that message stays. Card charges are listed on the Office tab.
             </p>
             <p>
-              Rent hits every 12 seconds once work mail is moving. Other plans join in the same minute and cost more. Leave Your love unanswered and a later message takes $25 for every unanswered mail.
+              Rent is $200, about every 40 seconds once work mail is moving. Reply within 15 seconds and attach a cheque or receipt. Miss it and the card is charged $250. The Office tab lists that charge, and the next note comes in 39 seconds. Your love writes about every 32 seconds. Other plans arrive one at a time, about every 16 seconds. Leave Your love unanswered and a later message takes $4.50 for every unanswered mail, up to $90.00, then rises to $6.00 and $7.50.
             </p>
             <p>
               A clean streak, or a sorted batch of the same kind of mail, pays extra office money.
@@ -115,7 +115,7 @@ export function Ledger() {
         </div>
 
         <div className="office-reveal mx-auto w-full max-w-md">
-          <NorthlineCard ref={card} />
+          <AmeriTrustCard ref={card} />
         </div>
       </div>
 

@@ -12,7 +12,7 @@ export const SITE = {
   name: "MAIL BOSS: Survival",
   shortName: "Mail Boss",
   description:
-    "An inbox survival game. Finish each message the way the label says, before office money hits $0 or 16 messages are still waiting.",
+    "An inbox survival game. Finish each message the way the label says, before office money hits $0 or 100 messages are still waiting.",
 } as const;
 
 export const NAV = [
@@ -230,7 +230,7 @@ export const SHIFT_STEPS: ShiftStep[] = [
     index: "03",
     kicker: "The pace",
     title: "Watch the gauge.",
-    body: "The gauge starts calm and climbs for about four minutes, from about 3 seconds down toward 0.7. A correct streak pays extra office money. A wrong move resets it. A red dot means that message is still waiting.",
+    body: "Work mail starts near 8 seconds. Every 10 seconds that gap tightens a little, and every two minutes it jumps faster, down toward 3.5. The red end means mail is fast enough to end the shift. A correct streak pays extra office money. A wrong move resets it. A red dot means that message is still waiting.",
     screen: "inbox",
     gauge: 0.86,
     streak: 5,
@@ -241,13 +241,13 @@ export const SHIFT_STEPS: ShiftStep[] = [
     index: "04",
     kicker: "Office",
     title: "Check the card.",
-    body: "Office shows the balance, how fast mail is arriving, and this shift. At $0 the card is empty. At 16 messages still waiting, the inbox collapses. Restart is on this tab.",
+    body: "Office shows the balance, how fast mail is arriving, and this shift. At $0 the card is empty. At 100 messages still waiting, the inbox collapses. Restart is on this tab.",
     screen: "office",
     office: {
       balance: "$1,240",
-      speed: "1.4s",
-      speedDetail: "A new message about every 1.4s.",
-      unanswered: "9/16",
+      speed: "5.2s",
+      speedDetail: "A new message about every 5.2s.",
+      unanswered: "9/100",
       correct: "14",
       mistakes: "2",
       received: "23",
@@ -279,7 +279,7 @@ export const RULES = [
     name: "Your love",
     role: "Personal",
     action: "Emoji",
-    detail: "Tap the heart. Leave it, and a later message takes $25 for every unanswered mail.",
+    detail: "Tap the heart. Leave it, and a later message takes $4.50 for every unanswered mail, up to $90.00. That rises to $6.00 and $7.50, up to $120.00 and $150.00.",
   },
   {
     name: "Amazing Deal",

@@ -1,6 +1,6 @@
 import type { InboxRow, OfficeSnap, ThreadMail } from "@/content/site";
 import { cn } from "@/lib/cn";
-import { NorthlineCard } from "@/components/ui/northline-card";
+import { AmeriTrustCard } from "@/components/ui/ameritrust-card";
 
 type InboxPhoneProps = {
   className?: string;
@@ -178,7 +178,7 @@ function Office({ office }: { office: OfficeSnap }) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden bg-[#F8F9FA] px-3 pt-3 pb-3">
-      <NorthlineCard balance={office.balance} className="shadow-none" />
+      <AmeriTrustCard balance={office.balance} className="shadow-none" />
       <div>
         <p className="px-1 text-[13px] font-semibold">Mail speed</p>
         <div className="mt-1.5 rounded-2xl border border-[#E8EAED] bg-white px-3.5 py-2.5">
@@ -211,7 +211,7 @@ function TabBar({ active }: { active: "mail" | "office" }) {
   const tabs = [
     { id: "mail" as const, label: "Mail" },
     { id: "office" as const, label: "Office" },
-    { id: "settings" as const, label: "Settings" },
+    { id: "settings" as const, label: "Account" },
   ];
 
   return (

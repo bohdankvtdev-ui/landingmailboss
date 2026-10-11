@@ -1,17 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import { InboxPhone } from "@/components/ui/inbox-phone";
 import { OPENING_INBOX } from "@/content/site";
 import { StoreBadges } from "@/components/ui/store-badges";
 import { gsap, SplitText, useGSAP } from "@/lib/gsap";
-
-const MailField = dynamic(
-  () => import("@/components/canvas/mail-field").then((mod) => mod.MailField),
-  { ssr: false },
-);
 
 const LINES = ["Clear the inbox", "before the shift", "ends."] as const;
 
@@ -111,7 +105,6 @@ export function Hero() {
   return (
     <section id="play" ref={root} className="relative isolate overflow-hidden">
       <div className="hero-glow pointer-events-none absolute inset-0" />
-      <MailField />
 
       <div className="relative z-10 mx-auto grid min-h-dvh max-w-6xl items-center gap-14 px-5 pt-28 pb-16 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-7">
@@ -129,14 +122,14 @@ export function Hero() {
           </h1>
           <p className="hero-lead mt-7 max-w-xl text-lg leading-8 text-[#5F6368]">
             You keep the books. Reply to John and mail starts arriving. Finish each message the way
-            the label says. Sixteen still waiting, or office money at $0, and the shift is over.
+            the label says. One hundred still waiting, or office money at $0, and the shift is over.
           </p>
 
           <div className="hero-actions mt-8">
             <dl className="grid max-w-md grid-cols-3 gap-3">
               <Fact value="$1,000" label="Starting money" />
-              <Fact value="3s" label="Opening gap" />
-              <Fact value="16" label="Inbox limit" />
+              <Fact value="8s" label="Opening gap" />
+              <Fact value="100" label="Inbox limit" />
             </dl>
             <StoreBadges className="mt-7" />
             <Anchor

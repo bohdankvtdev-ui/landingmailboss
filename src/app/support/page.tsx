@@ -25,11 +25,11 @@ const STEPS = [
   },
   {
     title: "Heart personal mail",
-    detail: "Your love. Leave it, and a later message takes $25 for every unanswered mail.",
+    detail: "Your love. Leave it, and a later message takes $4.50 for every unanswered mail, up to $90.00. That rises to $6.00 and $7.50 as the shift goes on.",
   },
   {
     title: "Finish the file",
-    detail: "Word, Excel, PDF, and drawings. Close the file, then reply. Finished work pays. Unfinished work costs office money.",
+    detail: "Word, Excel, PDF, and drawings. Close the file, then reply. Finished work pays. Unfinished work is a mistake, and the next work mail arrives as a pair.",
   },
 ] as const;
 
@@ -51,7 +51,7 @@ export default function SupportPage() {
         ))}
       </ol>
       <p className="mt-10 text-base leading-7 text-[#5F6368]">
-        The shift ends if the card is empty, or if the inbox collapses at 16 messages. Restart lives in the Office tab. Store purchases, if the listing adds them, are handled by Apple or Google.
+        The shift ends if the card is empty, or if the inbox collapses at 100 messages. Restart lives in the Office tab. Account holds the website, Support, and Privacy. Log out leaves this phone. Delete Boss Mail removes the address. Store purchases, if the listing adds them, are handled by Apple or Google.
       </p>
       <p className="mt-6">
         <Link href="/#play" className="text-sm text-ink underline decoration-[#E8EAED] underline-offset-4">

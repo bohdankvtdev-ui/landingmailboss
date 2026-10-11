@@ -12,9 +12,13 @@ export default function PrivacyPage() {
       title="Privacy"
       lede="MAIL BOSS: Survival is a game you play on your device. This page covers the app and this website."
     >
+      <h2>Boss Mail</h2>
+      <p>
+        The app asks you to create Boss Mail: a nickname, a domain, and a password. The address looks like nickname@bossmail.com. The password is stored as a hash. A session keeps you signed in. Account can log out of this phone, or delete the address.
+      </p>
       <h2>The game</h2>
       <p>
-        The app does not ask you to create an account. Office money, the inbox, and saved shifts stay on the device. The game does not include a sign-in, and this build does not send analytics.
+        Office money, the inbox, and saved shifts stay on the device. This build does not send analytics.
       </p>
       <h2>This website</h2>
       <p>
@@ -22,9 +26,9 @@ export default function PrivacyPage() {
       </p>
       <h2>Purchases</h2>
       <p>
-        If a store listing adds a purchase later, Apple or Google handles that payment. This website does not take card numbers. The Northline card in the game is office money, not a real card.
+        If a store listing adds a purchase later, Apple or Google handles that payment. This website does not take card numbers. The AmeriTrust card in the game is office money, not a real card.
       </p>
-      <p>Last updated September 28, 2026.</p>
+      <p>Last updated October 4, 2026.</p>
     </Legal>
   );
 }

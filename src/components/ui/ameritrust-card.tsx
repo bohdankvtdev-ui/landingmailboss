@@ -1,11 +1,11 @@
 import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
-type NorthlineCardProps = HTMLAttributes<HTMLDivElement> & {
+type AmeriTrustCardProps = HTMLAttributes<HTMLDivElement> & {
   balance?: string;
 };
 
-export const NorthlineCard = forwardRef<HTMLDivElement, NorthlineCardProps>(function NorthlineCard(
+export const AmeriTrustCard = forwardRef<HTMLDivElement, AmeriTrustCardProps>(function AmeriTrustCard(
   { balance = "$1,000", className, ...props },
   ref,
 ) {
@@ -36,7 +36,7 @@ export const NorthlineCard = forwardRef<HTMLDivElement, NorthlineCardProps>(func
             <span className="absolute bottom-0 left-0 size-5 rounded-tr-full border-t-[1.5px] border-r-[1.5px] border-[#FFF6EE]/70" />
           </span>
         </div>
-        <p className="text-[11px] font-semibold tracking-[0.24em] text-[#FFF6EE]/85">NORTHLINE</p>
+        <p className="text-[11px] font-semibold tracking-[0.14em] text-[#FFF6EE]/85">AMERITRUST</p>
       </div>
 
       <p className="relative font-mono text-lg tracking-[0.14em] text-[#F7F1E8] [text-shadow:0_1px_0_rgba(40,0,8,0.55)]">
